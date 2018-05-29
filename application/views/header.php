@@ -1,4 +1,11 @@
 <?php
+$id=$this->session->userdata('id');
+$url_home = base_url();
+
+ 
+ ?>
+
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">

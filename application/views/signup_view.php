@@ -1,62 +1,12 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-<title>HealthyLife - Signup</title>
-
-<!-- Favicon -->
-<link rel="shortcut icon" href="images/favicon.png" />
-
-<!-- font -->
-<link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-
-<!-- Plugins -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/plugins-css.css'); ?>" />
-
-<!-- Typography -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/typography.css'); ?>" />
-
-<!-- Shortcodes -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/shortcodes/shortcodes.css'); ?>" />
-
-<!-- Style -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
-
-<!-- Main-style -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/theme-style.css'); ?>" />
-
-<!-- Responsive -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/responsive.css'); ?>" /> 
-</head>
-
-<body>
-
- <div class="wrapper">
-
-<!--=================================
- preloader -->
- 
-<div id="pre-loader">
-    <img src="images/loader.svg" alt="">
-</div>
-
-<!--=================================
- preloader -->
- 
- 
-<!--=================================
- signup-->
-
 <section class="login-box-main height-100vh page-section-ptb parallax"  style="background: url(<?php echo base_url('assets/images/slider-bg.jpg)'); ?>;">
   <div class="login-box-main-middle">
   <div class="container">
-     <div class="row justify-content-center no-gutter">
+     <div class="row justify-content-center no-gutter" style="margin-top: 60px;">
       <div class="col-lg-2 col-md-4">
         <div class="login-box-left  white-bg">
         <a href="index.html">   <img class="logo-small" src="images/logo-emblem.png" alt=""></a>
              <ul class="nav">
-               <li><a href="login.html"> <i class="ti-user"></i> Login</a></li>
+               <li><a href="<?php echo base_url('home/login'); ?>"> <i class="ti-user"></i> Login</a></li>
                <li class="active"><a href="#"> <i class="ti-pencil-alt"></i> Signup</a></li>
             </ul>
            <div class="social-icons color-hover clearfix pos-bot pb-30 pl-30">

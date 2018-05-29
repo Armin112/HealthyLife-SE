@@ -70,10 +70,7 @@ function login_user(){
           $this->session->set_userdata('username',$data['username']);
           $this->session->set_userdata('email',$data['email']);
    
-          $this->load->view('header');
-          $this->load->view('navbar');
-          $this->load->view('home_view');
-          $this->load->view('footer');
+          redirect('home/user_profile');
    
         }
         else{
