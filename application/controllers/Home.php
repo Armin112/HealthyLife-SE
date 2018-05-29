@@ -78,7 +78,9 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('navbar');
-		$this->load->view('admin_users_view');
+		$data['title'] = "My Real Title";
+   
+		$this->load->view('admin_users_view', $data);
 		$this->load->view('footer');
 	}
 

@@ -42,9 +42,9 @@ $type = $this->session->userdata('type');
             ?>
             <li><a href="#"> ADMIN  <i class="fa fa-angle-down fa-indicator"></i> </a> 
 				<ul class="drop-down-multilevel left-side">
-                    <li><a href="<?php echo base_url('home/admin_users'); ?>">Users</a>  </li>
-                    <li><a href="<?php echo base_url('home/admin_diseases'); ?>">Diseases</a>  </li>
-                    <li><a href="<?php echo base_url('home/admin_drugs'); ?>">Drugs</a>  </li>
+                    <li><a href="<?php echo base_url('admin/admin_users'); ?>">Users</a>  </li>
+                    <li><a href="<?php echo base_url('admin/admin_diseases'); ?>">Diseases</a>  </li>
+                    <li><a href="<?php echo base_url('admin/admin_drugs'); ?>">Drugs</a>  </li>
                 </ul>
             </li>
             <?php }
