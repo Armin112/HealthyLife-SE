@@ -32,7 +32,7 @@
 			 
             <li><a href="<?php echo base_url('home/blog'); ?>"> BLOG </a> </li>
             <li><a href="<?php echo base_url('home/contact'); ?>"> CONTACT US  </a> </li>
-			<li><a class="button mt-30 mb-20 mr-0" href="login.html" style="margin-left: 20px;padding: 10px 20px;margin-top: 15px !important;">LOGIN</a></li>
+			<li><a class="button mt-30 mb-20 mr-0" href="<?php echo base_url('home/login'); ?>" style="margin-left: 20px;padding: 10px 20px;margin-top: 15px !important;">LOGIN</a></li>
          </ul>
         </div>
        </div>

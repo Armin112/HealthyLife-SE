@@ -57,4 +57,15 @@ class Home extends CI_Controller {
 		$this->load->view('herbs_view');
 		$this->load->view('footer');
 	}
+
+	public function login()
+	{
+		$this->load->view('login_view');
+	}
+
+	public function signup()
+	{
+		$this->load->view('signup_view');
+	}
+	
 }
