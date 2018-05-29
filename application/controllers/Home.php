@@ -66,6 +66,38 @@ class Home extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function edit_profile()
+	{
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$this->load->view('edit_profile_view');
+		$this->load->view('footer');
+	}
+
+	public function admin_users()
+	{
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$this->load->view('admin_users_view');
+		$this->load->view('footer');
+	}
+
+	public function admin_diseases()
+	{
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$this->load->view('admin_diseases_view');
+		$this->load->view('footer');
+	}
+
+	public function admin_drugs()
+	{
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$this->load->view('admin_drugs_view');
+		$this->load->view('footer');
+	}
+
 	public function login()
 	{
 		$this->load->view('header');

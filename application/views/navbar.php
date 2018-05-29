@@ -1,4 +1,7 @@
-
+<?php 
+$id=$this->session->userdata('id');
+$type = $this->session->userdata('type');
+?>
   <header id="header" class="header default">
 <!--=================================
  mega menu -->
@@ -29,12 +32,22 @@
                     <li><a href="vegetables.html">Vegetables</a> </li>
                 </ul>
             </li>
-			 
             <li><a href="<?php echo base_url('home/blog'); ?>"> BLOG </a> </li>
             <li><a href="<?php echo base_url('home/contact'); ?>"> CONTACT US  </a> </li>
-            
-           <?php 
-           $id=$this->session->userdata('id');
+            <?php 
+           if($id) { ?>
+            <li><a href="<?php echo base_url('home/edit_profile'); ?>">MY PROFILE</a></li>
+             <?php  } 
+            if($id && $type==1){
+            ?>
+            <li><a href="#"> ADMIN  <i class="fa fa-angle-down fa-indicator"></i> </a> 
+				<ul class="drop-down-multilevel left-side">
+                    <li><a href="<?php echo base_url('home/admin_users'); ?>">Users</a>  </li>
+                    <li><a href="<?php echo base_url('home/admin_diseases'); ?>">Diseases</a>  </li>
+                    <li><a href="<?php echo base_url('home/admin_drugs'); ?>">Drugs</a>  </li>
+                </ul>
+            </li>
+            <?php }
            if(!$id){ ?>
             <li><a class="button mt-30 mb-20 mr-0" href="<?php echo base_url('home/login'); ?>" style="margin-left: 20px;padding: 10px 20px;margin-top: 15px !important;">LOGIN</a></li>
           <?php  }

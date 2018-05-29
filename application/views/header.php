@@ -1,5 +1,5 @@
 <?php
-$id=$this->session->userdata('id');
+
 $url_home = base_url();
 
  

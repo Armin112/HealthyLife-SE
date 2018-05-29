@@ -26,7 +26,6 @@ function user_profile(){
  }
 
 public function register_user(){
- 
     $user=array(
     'firstname'=>$this->input->post('firstname'),
     'lastname'=>$this->input->post('lastname'),
@@ -43,15 +42,48 @@ if($username_check){
 $this->user_model->register_user($user);
 $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
 redirect('home/login');
+}
+else{
+$this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+redirect('user');
+}
+}
+
+public function edit_user(){
+    $user=array(
+    'id'=>$this->input->post('id'),
+    'firstname'=>$this->input->post('firstname'),
+    'lastname'=>$this->input->post('lastname'),
+    'email'=>$this->input->post('email')
+      );
+      print_r($user);
+
+
+
+$this->user_model->edit_user($user);
+if($user)
+{
+ 
+   
+    $this->session->set_userdata('firstname',$user['firstname']);
+    $this->session->set_userdata('lastname',$user['lastname']);
+
+    $this->session->set_userdata('email',$user['email']);
+  
+  $this->session->set_flashdata('success_msg', 'Congratulations, you are updated your account successfully.');
+  redirect('home/edit_profile');
 
 }
 else{
-
-$this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-redirect('user');
+  $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+  $this->load->view("home/edit_profile");
 
 }
+
 }
+
+
+
 
 function login_user(){
     $user_login=array(
@@ -69,8 +101,8 @@ function login_user(){
           $this->session->set_userdata('lastname',$data['lastname']);
           $this->session->set_userdata('username',$data['username']);
           $this->session->set_userdata('email',$data['email']);
-   
-          redirect('home/user_profile');
+          $this->session->set_userdata('type',$data['type']);
+          redirect('home/index');
    
         }
         else{

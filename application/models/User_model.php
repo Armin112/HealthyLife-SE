@@ -5,6 +5,14 @@ class User_model extends CI_model{
         $this->db->insert('users', $user);   
     }
 
+    public function edit_user($user){
+        $this->db->set('firstname', $user['firstname']);
+        $this->db->set('lastname', $user['lastname']);
+        $this->db->set('email', $user['email']);
+        $this->db->where('id', $user['id']);
+        $this->db->update('users');  
+    }
+
     public function login_user($username,$pass){
  
         $this->db->select('*');
