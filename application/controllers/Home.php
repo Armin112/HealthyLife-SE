@@ -84,6 +84,8 @@ class Home extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	
+
 	public function admin_diseases()
 	{
 		$this->load->view('header');

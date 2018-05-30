@@ -1,4 +1,6 @@
 
+
+
 <section class="page-title bg-overlay-black-60 parallax" data-jarallax='{"speed": 0.6}' style="background: url(<?php echo base_url('assets/images/slider-bg.jpg)'); ?>;">
     <div class="container">
       <div class="row"> 
