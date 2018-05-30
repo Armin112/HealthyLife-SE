@@ -3,12 +3,12 @@
     <div class="row"> 
       <div class="col-lg-12"> 
       <div class="page-title-name">
-          <h1>Add Disease</h1>
-          <p>Add new disease to you system.</p>
+          <h1>Edit Drug</h1>
+          <p>Edit drug in you system.</p>
         </div>
           <ul class="page-breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-            <li><a href="#">Add Disease</a> <i class="fa fa-angle-double-right"></i></li>
+            <li><a href="#">Edit Drug</a> <i class="fa fa-angle-double-right"></i></li>
            
        </ul>
      </div>
@@ -39,39 +39,39 @@
                     <?php
                   }
                   ?> 
-        <form role="form" method="post" action="<?php echo base_url('admin/add_disease_func'); ?>">
+                  <?php foreach($single_drug as $drug) { ?>
+        <form role="form" method="post" action="<?php echo base_url('admin/edit_drug/'.$drug->id); ?>">
+        <input id="id" class="web form-control" type="hidden" value="<?php echo $drug->id; ?>" placeholder="" name="id" required>
              <div class="section-field mb-20">
-               <label class="mb-10" for="name">Disease Title </label>
-                 <input id="title" class="web form-control" type="text" placeholder="" name="title" required>
+               <label class="mb-10" for="name">Drug Title </label>
+                 <input id="title" class="web form-control" type="text" placeholder="" value="<?php echo $drug->title; ?>" name="title" required>
               </div>
                <div class="section-field mb-20">
-               <label class="mb-10" for="name">Disease Content </label>
-                 <textarea id="content" class="web form-control" style="height:200px;" type="text" placeholder="" name="content" required></textarea>
+               <label class="mb-10" for="name">Drug Content </label>
+                 <textarea id="content" class="web form-control" style="height:200px;" type="text"  placeholder="" name="content" required><?php echo $drug->content; ?></textarea>
               </div>
            
             <div class="section-field mb-20">
-                 <label class="mb-10" for="name">Disease Tags </label>
-                  <input id="tags" type="text" placeholder="" class="form-control"  name="tags">
+                 <label class="mb-10" for="name">Drug Tags </label>
+                  <input id="tags" type="text" placeholder="" class="form-control" value="<?php echo $drug->tags; ?>"  name="tags">
              </div>
              <div class="section-field mb-20">
-                 <label class="mb-10" for="name">Disease Image </label>
+                 <label class="mb-10" for="name">Drug Image </label>
                   <input id="image" type="file" placeholder="" class="form-control"  name="image">
              </div>
-            <div class="section-field mb-20">
-            <label class="mb-10" for="name">Select drug which is recommended for this disease by your system </label>
-                <select class="form-control" id="suggested_drug" name="suggested_drug" style="height: unset;">
-                    <option value="">Select Drug</option>
-                    <option value="drug 1">Drug 1</option> 
-                </select>
-               
+             <div class="section-field mb-20">
+                 <label class="mb-10" for="name">Drug Category </label>
+                  <input id="category" type="text" placeholder="" class="form-control" value="<?php echo $drug->category; ?>"  name="category" required>
              </div>
              
+             
                 <button id="submit" name="submit" class="button">
-                <span>Add Disease</span>
+                <span>Edit Drug</span>
                 <i class="fa fa-check"></i>
                 </button>
           </div>
                 </form>
+                  <?php } ?>
          </div>
     </div>
    </div>

@@ -4,12 +4,12 @@
       <div class="row"> 
         <div class="col-lg-12"> 
         <div class="page-title-name">
-            <h1>All Drugs</h1>
-            <p>View or delete drugs on your site.</p>
+            <h1>All Blogs</h1>
+            <p>View or delete blogs on your site.</p>
           </div>
             <ul class="page-breadcrumb">
               <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-              <li><a href="#">All Drugs</a> <i class="fa fa-angle-double-right"></i></li>
+              <li><a href="#">All Blogs</a> <i class="fa fa-angle-double-right"></i></li>
              
          </ul>
        </div>
@@ -38,7 +38,7 @@
                     <?php
                   }
                   ?>    
-    <div ><a class="button mr-0" href="<?php echo base_url('admin/add_drug'); ?>"  style="padding: 15px 30px;">ADD DRUG</a></div>     
+    <div ><a class="button mr-0" href="<?php echo base_url('admin/add_blog'); ?>"  style="padding: 15px 30px;">ADD BLOG</a></div>     
         
     <table class="admin-table">
         <tr>
@@ -48,15 +48,15 @@
             <th>Action</th>
         </tr>
         <?php
-        foreach($drugs as $drug) { ?>
+        foreach($blogs as $blog) { ?>
        <tr >
-       <td><?php echo $drug->id; ?></td>
-            <td><?php echo $drug->title; ?></td>
-            <td><?php echo $drug->date; ?></td>
+       <td><?php echo $blog->id; ?></td>
+            <td><?php echo $blog->title; ?></td>
+            <td><?php echo $blog->date; ?></td>
             <td> 
-            <a href="<?=base_url('drug/single_drug/'.$drug->id); ?>" rel="tooltip" title="Remove" class="btn btn-warning btn-simple btn-lg">Read More </a>
-              <a href="<?=base_url('admin/admin_edit_drug/'.$drug->id); ?>" rel="tooltip" title="Remove" class="btn btn-primary btn-simple btn-lg">Edit </a>
-                <a href="<?=base_url('admin/delete_drug/'.$drug->id); ?>" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">Delete</a>
+              <a href="<?=base_url('blog/single_blog/'.$blog->id); ?>" rel="tooltip" title="Remove" class="btn btn-warning btn-simple btn-lg">Read More </a>
+              <a href="<?=base_url('admin/admin_edit_blog/'.$blog->id); ?>" rel="tooltip" title="Remove" class="btn btn-primary btn-simple btn-lg">Edit </a>
+              <a href="<?=base_url('admin/delete_blog/'.$blog->id); ?>" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">Delete </a>
         </td>
         </tr>
     <?php } ?>

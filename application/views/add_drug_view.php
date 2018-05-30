@@ -57,6 +57,11 @@
                  <label class="mb-10" for="name">Category </label>
                   <input id="category" type="text" placeholder="" class="form-control"  name="category" required>
              </div>
+
+             <div class="section-field mb-20">
+                 <label class="mb-10" for="name">Drug Image </label>
+                  <input id="image" type="file" placeholder="" class="form-control"  name="image">
+             </div>
              
                 <button id="submit" name="submit" class="button">
                 <span>Add Drug</span>

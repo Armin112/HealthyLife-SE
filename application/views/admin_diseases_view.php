@@ -54,9 +54,9 @@
             <td><?php echo $disease->title; ?></td>
             <td><?php echo $disease->date; ?></td>
             <td> 
-                <a href="<?=base_url('admin/delete_disease/'.$disease->id); ?>" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
-                Delete
-                </a>
+              <a href="<?=base_url('disease/single_disease/'.$disease->id); ?>" rel="tooltip" title="Remove" class="btn btn-warning btn-simple btn-lg">Read More </a>
+              <a href="<?=base_url('admin/admin_edit_disease/'.$disease->id); ?>" rel="tooltip" title="Remove" class="btn btn-primary btn-simple btn-lg">Edit </a>
+              <a href="<?=base_url('admin/delete_disease/'.$disease->id); ?>" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">Delete </a>
         </td>
         </tr>
     <?php } ?>

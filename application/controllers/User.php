@@ -58,16 +58,11 @@ public function edit_user(){
       );
       print_r($user);
 
-
-
 $this->user_model->edit_user($user);
 if($user)
 {
- 
-   
     $this->session->set_userdata('firstname',$user['firstname']);
     $this->session->set_userdata('lastname',$user['lastname']);
-
     $this->session->set_userdata('email',$user['email']);
   
   $this->session->set_flashdata('success_msg', 'Congratulations, you are updated your account successfully.');
@@ -79,7 +74,6 @@ else{
   $this->load->view("home/edit_profile");
 
 }
-
 }
 
 
