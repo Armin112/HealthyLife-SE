@@ -41,9 +41,16 @@ public function __construct(){
     //DISEASES
     public function add_disease()
         {
+
+            $query1 = $this->admin_model->show_all_drugs();
+            $data['drugs_for_disease'] = null;
+            if($query1){
+            $data['drugs_for_disease'] =  $query1;
+            }
+        
             $this->load->view('header');
             $this->load->view('navbar');   
-            $this->load->view('add_disease_view');
+            $this->load->view('add_disease_view', $data);
             $this->load->view('footer');
         }
     
@@ -60,17 +67,24 @@ public function __construct(){
             $this->load->view('footer');   
     }
 
+   
+
     public function add_disease_func(){
+
+        $suggested_drug_id = $this->input->post('suggested_drug');
+        $data['proba'] = $this->admin_model->get_suggested_drug($suggested_drug_id);
+
         $disease=array(
         'title'=>$this->input->post('title'),
         'content'=>$this->input->post('content'),
         'tags'=>$this->input->post('tags'),
         'suggested_drug'=>$this->input->post('suggested_drug'),
+        'suggested_drug_title'=>$data['proba'],
         'excerpt'=>substr($this->input->post('content'), 0, 50),
         'date'=> date('Y-m-d')
         );
         print_r($disease);
-
+      
         if($disease){
         $this->admin_model->add_disease_func($disease);
         $this->session->set_flashdata('success_msg', 'Disease succesfully added.');
@@ -83,11 +97,19 @@ public function __construct(){
     }
 
     public function admin_edit_disease(){  
+       
+
         $id = $this->uri->segment(3);
         $query = $this->admin_model->get_single_disease($id);
         $data['single_disease'] = null;
         if($query){
             $data['single_disease'] =  $query;
+        }
+
+        $query1 = $this->admin_model->show_all_drugs();
+        $data['drugs_for_disease'] = null;
+        if($query1){
+        $data['drugs_for_disease'] =  $query1;
         }
         
             $this->load->view('header');
@@ -97,6 +119,10 @@ public function __construct(){
     }
 
     public function edit_disease(){  
+        $suggested_drug_id = $this->input->post('suggested_drug');
+        $data['proba'] = $this->admin_model->get_suggested_drug($suggested_drug_id);
+       
+        
     $treba = $this->input->post('id');
         $disease=array(
            
@@ -105,7 +131,8 @@ public function __construct(){
         'content'=>$this->input->post('content'),
         'excerpt'=>substr($this->input->post('content'), 0, 50),
         'tags'=>$this->input->post('tags'),
-        'suggested_drug'=>$this->input->post('suggested_drug')
+        'suggested_drug'=>$this->input->post('suggested_drug'),
+        'suggested_drug_title'=>$data['proba']
         );
         print_r($disease);
 
@@ -130,13 +157,6 @@ public function __construct(){
         $this->admin_model->delete_disease($id);
         $this->session->set_flashdata('success_msg', 'Congratulations, you deleted the disease successfully.');
         redirect('admin/admin_diseases');
-    }
-
-    public function get_single_disease()
-    {  
-
-        
-    
     }
 
     
@@ -345,8 +365,7 @@ public function __construct(){
     public function get_single_blog()
     {  
 
-        
-    
+         
     }
 
 

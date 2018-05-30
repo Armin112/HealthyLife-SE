@@ -17,7 +17,7 @@ $type = $this->session->userdata('type');
         <!-- menu logo -->
         <ul class="menu-logo">
             <li>
-                <a href="index-01.html"><img id="logo_img" src="<?php echo base_url('assets/images/logo.png'); ?>" alt="logo"> </a>
+                <a href="<?php echo base_url('home/index'); ?>"><img id="logo_img" src="<?php echo base_url('assets/images/logo.png'); ?>" alt="logo"> </a>
             </li>
         </ul>
         <!-- menu links -->
@@ -27,12 +27,12 @@ $type = $this->session->userdata('type');
             <li><a href="<?php echo base_url('home/about'); ?>">ABOUT</a></li>
             <li><a href="#"> CATEGORIES  <i class="fa fa-angle-down fa-indicator"></i> </a> 
 				<ul class="drop-down-multilevel left-side">
-                    <li><a href="<?php echo base_url('home/herbs'); ?>">Herbs</a>  </li>
-                    <li><a href="fruits.html">Fruits</a> </li>
-                    <li><a href="vegetables.html">Vegetables</a> </li>
+                    <li><a href="<?php echo base_url('drugs/herbs'); ?>">Herbs</a>  </li>
+                    <li><a href="<?php echo base_url('drugs/fruits'); ?>">Fruits</a> </li>
+                    <li><a href="<?php echo base_url('drugs/vegetables'); ?>">Vegetables</a> </li>
                 </ul>
             </li>
-            <li><a href="<?php echo base_url('home/blog'); ?>"> BLOG </a> </li>
+            <li><a href="<?php echo base_url('blog'); ?>"> BLOG </a> </li>
             <li><a href="<?php echo base_url('home/contact'); ?>"> CONTACT US  </a> </li>
             <?php 
            if($id) { ?>
@@ -45,6 +45,7 @@ $type = $this->session->userdata('type');
                     <li><a href="<?php echo base_url('admin/admin_users'); ?>">Users</a>  </li>
                     <li><a href="<?php echo base_url('admin/admin_diseases'); ?>">Diseases</a>  </li>
                     <li><a href="<?php echo base_url('admin/admin_drugs'); ?>">Drugs</a>  </li>
+                    <li><a href="<?php echo base_url('admin/admin_blogs'); ?>">Drugs</a>  </li>
                 </ul>
             </li>
             <?php }

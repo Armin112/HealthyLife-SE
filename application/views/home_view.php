@@ -37,15 +37,15 @@
            <div class="bitcoin-about-bg">
             <div class="row">
              <div class="col-md-12">
-                  <form action="" method="POST" id="mc-embedded-search-form" name="mc-embedded-search-form">
+             <form role="form" method="get" action="<?php echo base_url('home/search'); ?>">
                            
             <div id="mc_embed_signup_scroll_2" class="col-md-10 pull-left">
-              <input id="search" class="form-control" type="text" placeholder="Enter disease and press enter or submit..." name="disease" value="" style="background: rgba(255,255,255,0.4); ">
+              <input id="search_disease" class="form-control" type="text" placeholder="Enter disease and press enter or submit..." name="search_disease" value="" style="background: rgba(255,255,255,0.4); ">
             </div>
            
             
               <div class="clear col-md-2 pull-right">
-                <button type="submit" name="submitbtn" id="mc-embedded-subscribe" class="button mt-20 form-button" style="background: #ffffff !important; color: #fab41b;margin-top: 0 !important;padding: 13px 40px;">  Submit </button>
+                <button name="submit" id="submit" class="button mt-20 form-button" style="background: #ffffff !important; color: #fab41b;margin-top: 0 !important;padding: 13px 40px;">  Submit </button>
               </div>
             </form>
                    </div>
@@ -67,56 +67,37 @@
       </div>
 <div class="col-lg-12 ">
           <div class=" text-black">
-               <div class="owl-carousel" data-nav-dots="true" data-items="3" data-md-items="3" data-sm-items="3">
-         <div class="col-lg-12 col-md-12 col-sm-12 xs-mb-30">
-         <div class="blog-box blog-2 white-bg active">
-            <div class="feature-image mb-20">
-               <img alt="" src="images/empty-template.jpg" class="img-fluid">
-             </div>
-            <div class="blog-info">
-              <h4 class="text-black"> <a href="#"> Caroli Disease </a> </h4>
-               <strong class="theme-color">Fruits</strong>
-               <p class="mt-15">Quibusdam dolor sit amet, consectetur adipisicing elit. Vero quod conseqt, enim expedita  nesciunt incidunt accusamus necessitatibus modi.</p>
-			   <strong class="theme-color">SUGGESTED DRUGS</strong>
-			 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#">   Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-				<h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-            </div>
-         </div>
-       </div>
-       <div class="col-lg-12 col-md-12 col-sm-12 xs-mb-30">
-         <div class="blog-box blog-2 white-bg active">
-            <div class="feature-image mb-20">
-               <img alt="" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" class="img-fluid">
-             </div>
-            <div class="blog-info">
-              <h4 class="text-black"> <a href="#"> Cystic Fibrosis </a> </h4>
-               <strong class="theme-color">Herbs</strong>
+               <div class="" data-nav-dots="true" data-items="3" data-md-items="3" data-sm-items="3">
+               <?php 
+     $j = 0;
+     foreach($diseases as $disease) { 
+        if(++$j > 3) break; ?>
+               <div class="col-lg-4 col-md-4 col-sm-4 xs-mb-30 pull-left">
+           <div class="blog-box blog-2 white-bg active">
+              <div class="feature-image mb-20">
+                 <img alt="" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" class="img-fluid">
+               </div>
+              <div class="blog-info">
+                <h4 class="text-black"> <a href="<?=base_url('disease/single/'.$disease->id); ?>"><?php echo $disease->title; ?></a> </h4>
+                 
+                 <p class="mt-15"><?php echo $disease->excerpt; ?></p>
+                 <strong class="theme-color">SUGGESTED DRUG BY SYSTEM</strong>
+          
+               <h4 class="mt-15 suggested-drugs"><span style="font-weight:600"><a href="<?=base_url('drug/single/'.$disease->suggested_drug); ?>"><?php echo $disease->suggested_drug_title; ?></a></span>  
+               
+                <button><span class="unlike empty">345</span></button>
+                <button><span class="unlike full">345</span></button>
 
-               <p class="mt-15">Nesciunt incidunt accusamus necessitatibus modi adipisci officia sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia.</p>
-			    <strong class="theme-color">SUGGESTED DRUGS</strong>
-			 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-				<h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-            </div>
+                <button><span class="like empty">345</span></button> 
+                <button><span class="like full">345</span></button>  
+               
+               
+              </h4>
+                
+              </div>
+           </div>
          </div>
-       </div>
-       <div class="col-lg-12 col-md-12 col-sm-12">
-         <div class="blog-box blog-2 white-bg active">
-            <div class="feature-image mb-20">
-               <img alt="" src="images/empty-template.jpg" class="img-fluid">
-             </div>
-            <div class="blog-info">
-              <h4 class="text-black"> <a href="#"> Friedreich Ataxia </a> </h4>
-               <strong class="theme-color">Vegetables</strong>
-               <p class="mt-15">Enim expedita  nesciunt incidunt accusamus necessitatibus modi adipisci officia sed quia nesciunt incidunt accusamus necessitatibus modi.</p>
-			   <strong class="theme-color">SUGGESTED DRUGS</strong>
-			 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 2</a></span> <span style="float:right; font-weight:400">310 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>2 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-				 <h4 class="mt-15" style="border-bottom:1px solid #f3f3f3;"><span style="font-weight:600"><a href="#"> Drug 3</a></span> <span style="float:right; font-weight:400">234 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>14 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-            </div>
-         </div>
-       </div>
+     <?php } ?>
                 </div>
               </div>
              </div> 
@@ -145,21 +126,21 @@
                <div class="col-md-4 col-sm-4 mt-50">
                  <div class="counter text-white">
                     <span class="ti-heart-broken icon" aria-hidden="true"></span>
-                    <span class="timer" data-to="234" data-speed="10000">234</span>
+                    <span class="timer" data-to="234" data-speed="10000"><?php echo $num_of_diseases; ?></span>
                     <label>Different diseases</label>
                   </div>
                </div>
                <div class="col-md-4 col-sm-4 mt-50">
                  <div class="counter text-white">
                     <span class="ti-crown icon" aria-hidden="true"></span>
-                    <span class="timer" data-to="1025" data-speed="10000">1025</span>
+                    <span class="timer" data-to="1025" data-speed="10000"><?php echo $num_of_drugs; ?></span>
                     <label>Different type of natural drugs</label>
                   </div>
                </div>
                <div class="col-md-4 col-sm-4 mt-50">
                  <div class="counter text-white">
                     <span class="ti-user icon" aria-hidden="true"></span>
-                    <span class="timer" data-to="435" data-speed="10000">435</span>
+                    <span class="timer" data-to="435" data-speed="10000"><?php echo $num_of_users; ?></span>
                     <label>Number of users</label>
                   </div>
                </div>
@@ -181,36 +162,21 @@
        </div>
      </div>
      <div class="row">
+     <?php 
+     $i = 0;
+     foreach($blogs as $blog) { 
+        if(++$i > 3) break; ?>
        <div class="col-md-4 col-sm-4 xs-mb-30">
          <div class="blog">
            <img class="img-fluid mb-30" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" alt="">
-            <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet?</a></h3>
-            <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h3 class="fw-5 mt-10"><a href="<?=base_url('blog/single/'.$blog->id); ?>"><?php echo $blog->title; ?></a></h3>
+            <p><?php echo $blog->excerpt; ?></p>
             <div class="admin">
              <span>By adimn / <a href="#">Business</a></span>
            </div>
          </div>
        </div>
-       <div class="col-md-4 col-sm-4 xs-mb-30">
-         <div class="blog">
-          <img class="img-fluid mb-30" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" alt="">
-            <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-            <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div class="admin">
-             <span>By adimn / <a href="#">Business</a></span>
-           </div>
-         </div>
-       </div>
-       <div class="col-md-4 col-sm-4">
-         <div class="blog">
-          <img class="img-fluid mb-30" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" alt="">
-            <h3 class="fw-5 mt-10"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-            <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div class="admin">
-             <span>By adimn / <a href="#">Business</a></span>
-           </div>
-         </div>
-       </div>
+     <?php } ?>
      </div>
   </div>
 </section>

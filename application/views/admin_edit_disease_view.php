@@ -61,9 +61,11 @@
              </div>
             <div class="section-field mb-20">
             <label class="mb-10" for="name">Select drug which is recommended for this disease by your system </label>
-                <select class="form-control" id="suggested_drug" name="suggested_drug" style="height: unset;">
-                    <option value="<?php echo $disease->suggested_drug; ?>"><?php echo $disease->suggested_drug; ?></option>
-                    <option value="drug 1">Drug 1</option> 
+            <select class="form-control" id="suggested_drug" name="suggested_drug" style="height: unset;">
+                    <option value="<?php echo $disease->suggested_drug; ?>"><?php echo $disease->suggested_drug_title; ?></option>
+                    <?php foreach($drugs_for_disease as $drug_for_disease) {  ?>
+                      <option value="<?php echo $drug_for_disease->id ;  ?>"><?php echo $drug_for_disease->title ;?></option> 
+                    <?php } ?>
                 </select>
                
              </div>

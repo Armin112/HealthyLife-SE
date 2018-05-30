@@ -41,21 +41,27 @@
                   ?> 
         <form role="form" method="post" action="<?php echo base_url('admin/add_drug_func'); ?>">
              <div class="section-field mb-20">
-               <label class="mb-10" for="name">Title </label>
+               <label class="mb-10" for="name">Drug Title </label>
                  <input id="title" class="web form-control" type="text" placeholder="" name="title" required>
               </div>
                <div class="section-field mb-20">
-               <label class="mb-10" for="name">Content </label>
-                 <input id="content" class="web form-control" type="text" placeholder="" name="content" required>
+               <label class="mb-10" for="name">Drug Content </label>
+               <textarea id="content" class="web form-control" style="height:200px;" placeholder="" name="content" required></textarea>
               </div>
            
             <div class="section-field mb-20">
-                 <label class="mb-10" for="name">Tags </label>
+                 <label class="mb-10" for="name">Drug Tags </label>
                   <input id="tags" type="text" placeholder="" class="form-control"  name="tags" required>
              </div>
              <div class="section-field mb-20">
-                 <label class="mb-10" for="name">Category </label>
-                  <input id="category" type="text" placeholder="" class="form-control"  name="category" required>
+                 <label class="mb-10" for="name">Drug Category </label>
+                 <select class="form-control" id="category" name="category" style="height: unset;" required>
+                    <option value="">Select Category</option>
+                    <option value="Herbs">Herbs</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option> 
+                </select>
+                 
              </div>
 
              <div class="section-field mb-20">

@@ -54,7 +54,7 @@
             <td><?php echo $blog->title; ?></td>
             <td><?php echo $blog->date; ?></td>
             <td> 
-              <a href="<?=base_url('blog/single_blog/'.$blog->id); ?>" rel="tooltip" title="Remove" class="btn btn-warning btn-simple btn-lg">Read More </a>
+              <a href="<?=base_url('blog/single/'.$blog->id); ?>" rel="tooltip" title="Remove" class="btn btn-warning btn-simple btn-lg">Read More </a>
               <a href="<?=base_url('admin/admin_edit_blog/'.$blog->id); ?>" rel="tooltip" title="Remove" class="btn btn-primary btn-simple btn-lg">Edit </a>
               <a href="<?=base_url('admin/delete_blog/'.$blog->id); ?>" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">Delete </a>
         </td>

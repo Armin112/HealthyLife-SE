@@ -3,13 +3,13 @@
     <div class="row"> 
       <div class="col-lg-12"> 
       <div class="page-title-name">
-          <h1>Herbs</h1>
-          <p>Best herbs for you and your body. Find it here.</p>
+          <h1>Fruits</h1>
+          <p>Best fruits for you and your body. Find it here.</p>
         </div>
           <ul class="page-breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
             <li><a href="#">Categories</a> <i class="fa fa-angle-double-right"></i></li>
-            <li><span>Herbs</span> </li>
+            <li><span>Fruits</span> </li>
        </ul>
      </div>
      </div>
@@ -26,16 +26,16 @@ page-title -->
 <section class="blog blog-grid-3-column white-bg page-section-ptb">
   <div class="container">
     <div class="row">
-    <?php foreach($herbs as $herb) {  ?>
+    <?php foreach($fruits as $fruit) {  ?>
      <div class="col-lg-4 col-md-4" style="margin-bottom: 20px;">
         <div class="blog-box blog-2 white-bg active">
             <div class="feature-image mb-20">
                <img alt="" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" class="img-fluid">
              </div>
             <div class="blog-info">
-              <h4 class="text-black"> <a href="<?=base_url('drug/single/'.$herb->id); ?>"> <?php echo $herb->title ;?> </a> </h4>
+              <h4 class="text-black"> <a href="<?=base_url('drug/single/'.$fruit->id); ?>"> <?php echo $fruit->title ;?> </a> </h4>
               
-               <p class="mt-15"> <?php echo $herb->excerpt ;?></p>
+               <p class="mt-15"> <?php echo $fruit->excerpt ;?></p>
 			 
 			
             </div>

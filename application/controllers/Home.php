@@ -18,11 +18,62 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct(){
+ 
+		parent::__construct();
+	
+		$this->load->model('admin_model');
+	
+	}
+
+	
 	public function index()
 	{
+		
+		$query_blog = $this->admin_model->show_all_blogs();
+        $data['blogs'] = null;
+        if($query_blog){
+            $data['blogs'] =  $query_blog;
+		}
+		
+		$query_disease = $this->admin_model->show_all_diseases();
+        $data['diseases'] = null;
+        if($query_disease){
+			$data['diseases'] =  $query_disease;
+		}
+
+		$num_of_users = $this->admin_model->show_num_of_users();
+		$data['num_of_users'] =  $num_of_users;
+		
+		$num_of_drugs = $this->admin_model->show_num_of_drugs();
+		$data['num_of_drugs'] =  $num_of_drugs;
+
+		$num_of_diseases = $this->admin_model->show_num_of_diseases();
+		$data['num_of_diseases'] =  $num_of_diseases;
+		
 		$this->load->view('header');
 		$this->load->view('navbar');
-		$this->load->view('home_view');
+		$this->load->view('home_view', $data);
+		$this->load->view('footer');
+	}
+
+	public function search()
+	{
+		$data['query_parameter'] = $this->input->get('search_disease');
+		$disease=array(
+			'search_disease'=>$this->input->get('search_disease')
+		);
+	
+
+		$searched_diseases = $this->admin_model->show_searched_diseases($disease);
+        $data['diseases'] = null;
+        if($searched_diseases){
+			$data['diseases'] =  $searched_diseases;
+	}
+	$this->load->view('header');
+		$this->load->view('navbar');
+		$this->load->view('search_view', $data);
 		$this->load->view('footer');
 	}
 	

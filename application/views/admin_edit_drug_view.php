@@ -61,7 +61,12 @@
              </div>
              <div class="section-field mb-20">
                  <label class="mb-10" for="name">Drug Category </label>
-                  <input id="category" type="text" placeholder="" class="form-control" value="<?php echo $drug->category; ?>"  name="category" required>
+                 <select class="form-control" id="category" name="category" style="height: unset;" required>
+                    <option value="<?php echo $drug->category; ?>"><?php echo $drug->category; ?></option>
+                    <option value="Herbs">Herbs</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option> 
+                </select>
              </div>
              
              

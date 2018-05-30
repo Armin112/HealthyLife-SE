@@ -1,6 +1,28 @@
 <?php
 class Admin_model extends CI_model{
 
+    function show_num_of_users(){
+        $this->db->select("id");
+        $this->db->from('users');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    function show_num_of_diseases(){
+        $this->db->select("id");
+        $this->db->from('disease');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    function show_num_of_drugs(){
+        $this->db->select("id");
+        $this->db->from('drug');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+
     //USERS
     function show_all_users()
     {
@@ -23,10 +45,32 @@ class Admin_model extends CI_model{
 
     function show_all_diseases()
     {
-        $this->db->select("id,title, content, tags, suggested_drug, date");
+        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title, date");
         $this->db->from('disease');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    function show_searched_diseases($disease)
+    {
+        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title, date");
+        $this->db->from('disease');
+        $this->db->like('title', $disease['search_disease']);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function get_suggested_drug($id)
+    {
+        $this->db->select("title");
+        $this->db->from('drug');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        if($query->num_rows()>0) {
+            $data = $query->row_array(); 
+            $value = $data['title']; 
+            return $value;      
+          }  
     }
 
     function delete_disease($id){
@@ -35,7 +79,7 @@ class Admin_model extends CI_model{
     }
 
     function get_single_disease($id){
-        $this->db->select("id,title, content, tags, suggested_drug, date");
+        $this->db->select("id,title, content,excerpt, tags, suggested_drug,suggested_drug_title, date");
         $this->db->from('disease');
         $this->db->where('id', $id);
         $query = $this->db->get();
@@ -60,7 +104,7 @@ class Admin_model extends CI_model{
 
     function show_all_drugs()
     {
-        $this->db->select("id,title, date");
+        $this->db->select("id,title,excerpt, tags, category, date");
         $this->db->from('drug');
         $query = $this->db->get();
         return $query->result();
@@ -72,7 +116,7 @@ class Admin_model extends CI_model{
     }
 
     function get_single_drug($id){
-        $this->db->select("id,title, content, tags, category, date");
+        $this->db->select("id,title, content,excerpt, tags, category, date");
         $this->db->from('drug');
         $this->db->where('id', $id);
         $query = $this->db->get();
@@ -96,7 +140,7 @@ class Admin_model extends CI_model{
 
     function show_all_blogs()
     {
-        $this->db->select("id,title, date");
+        $this->db->select("id,title,excerpt,tags, date");
         $this->db->from('blog');
         $query = $this->db->get();
         return $query->result();
@@ -108,7 +152,7 @@ class Admin_model extends CI_model{
     }
 
     function get_single_blog($id){
-        $this->db->select("id,title, content, tags, date");
+        $this->db->select("id,title, content,excerpt, tags, date");
         $this->db->from('blog');
         $this->db->where('id', $id);
         $query = $this->db->get();

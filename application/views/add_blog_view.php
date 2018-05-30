@@ -46,7 +46,7 @@
               </div>
                <div class="section-field mb-20">
                <label class="mb-10" for="name">Content </label>
-                 <input id="content" class="web form-control" type="text" placeholder="" name="content" required>
+                 <textarea id="content" class="web form-control" style="height:200px;" placeholder="" name="content" required></textarea>
               </div>
            
             <div class="section-field mb-20">

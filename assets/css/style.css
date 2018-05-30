@@ -2173,3 +2173,8 @@ strong.theme-color {
     font-size: 13px;
     font-weight: 500;
 }
+
+.related-work .item {
+    width: 33%;
+    float: left;
+}
