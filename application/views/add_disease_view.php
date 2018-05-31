@@ -39,7 +39,7 @@
                     <?php
                   }
                   ?> 
-        <form role="form" method="post" action="<?php echo base_url('admin/add_disease_func'); ?>">
+        <form role="form" method="post" action="<?php echo base_url('admin/add_disease_func'); ?>" enctype="multipart/form-data">
              <div class="section-field mb-20">
                <label class="mb-10" for="name">Disease Title </label>
                  <input id="title" class="web form-control" type="text" placeholder="" name="title" required>
@@ -55,7 +55,7 @@
              </div>
              <div class="section-field mb-20">
                  <label class="mb-10" for="name">Disease Image </label>
-                  <input id="image" type="file" placeholder="" class="form-control"  name="image">
+                  <input id="image" type="file" placeholder="" class="form-control"  name="userfile">
              </div>
             <div class="section-field mb-20">
             <label class="mb-10" for="name">Select drug which is recommended for this disease by your system </label>

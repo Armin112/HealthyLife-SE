@@ -39,7 +39,7 @@
                     <?php
                   }
                   ?> 
-        <form role="form" method="post" action="<?php echo base_url('admin/add_drug_func'); ?>">
+        <form role="form" method="post" action="<?php echo base_url('admin/add_drug_func'); ?>"  enctype="multipart/form-data">
              <div class="section-field mb-20">
                <label class="mb-10" for="name">Drug Title </label>
                  <input id="title" class="web form-control" type="text" placeholder="" name="title" required>
@@ -66,7 +66,7 @@
 
              <div class="section-field mb-20">
                  <label class="mb-10" for="name">Drug Image </label>
-                  <input id="image" type="file" placeholder="" class="form-control"  name="image">
+                  <input id="userfile" type="file" placeholder="" class="form-control"  name="userfile">
              </div>
              
                 <button id="submit" name="submit" class="button">

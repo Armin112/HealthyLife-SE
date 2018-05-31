@@ -2178,3 +2178,14 @@ strong.theme-color {
     width: 33%;
     float: left;
 }
+
+.feature-image img {
+    height: 100%;
+    max-width: 100%;
+    width: 100%;
+}
+
+.feature-image {
+    height: 220px;
+    overflow: hidden;
+}

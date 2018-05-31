@@ -25,7 +25,7 @@
    <div class="col-lg-12">
        <div class="blog-entry mb-10">
             <div class="entry-image clearfix">
-              <img class="img-fluid" src="<?php echo base_url('assets/images/blog-big-template.jpg'); ?>" alt="">
+              <img class="img-fluid" src="<?php echo base_url('/images/'.$drug->image); ?>" alt="">
           </div>
           <div class="blog-detail">
               <div class="entry-meta mb-10">
@@ -63,7 +63,7 @@
                   <span><i class="fa fa-user"></i> By Admin</span>
                   <span><i class="fa fa-calendar-check-o"></i> <?php echo $related_drug->date ;?> </span>
                   </div>  
-                  <div class="blog-box-img" style="background-image:url(<?php echo base_url('assets/images/blog-big-template.jpg)' );?>"></div>
+                  <div class="blog-box-img" style="background-image:url(<?php echo base_url('images/'.$related_drug->image.')' );?>"></div>
                 </div>
             </div>
          <?php } ?>

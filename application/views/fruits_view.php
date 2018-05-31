@@ -30,7 +30,7 @@ page-title -->
      <div class="col-lg-4 col-md-4" style="margin-bottom: 20px;">
         <div class="blog-box blog-2 white-bg active">
             <div class="feature-image mb-20">
-               <img alt="" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" class="img-fluid">
+               <img alt="" src="<?php echo base_url('images/'.$fruit->image); ?>" class="img-fluid">
              </div>
             <div class="blog-info">
               <h4 class="text-black"> <a href="<?=base_url('drug/single/'.$fruit->id); ?>"> <?php echo $fruit->title ;?> </a> </h4>

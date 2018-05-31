@@ -93,7 +93,7 @@ class Admin_model extends CI_model{
 
     function show_all_diseases()
     {
-        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title, date");
+        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title,image, date");
         $this->db->from('disease');
         $query = $this->db->get();
         return $query->result();
@@ -101,7 +101,7 @@ class Admin_model extends CI_model{
 
     function show_searched_diseases($disease)
     {
-        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title, date");
+        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title,image, date");
         $this->db->from('disease');
         $this->db->like('title', $disease['search_disease']);
         $query = $this->db->get();
@@ -127,7 +127,7 @@ class Admin_model extends CI_model{
     }
 
     function get_single_disease($id){
-        $this->db->select("id,title, content,excerpt, tags, suggested_drug,suggested_drug_title, date");
+        $this->db->select("id,title, content,excerpt, tags, suggested_drug,suggested_drug_title,image, date");
         $this->db->from('disease');
         $this->db->where('id', $id);
         $query = $this->db->get();
@@ -152,7 +152,7 @@ class Admin_model extends CI_model{
 
     function show_all_drugs()
     {
-        $this->db->select("id,title,excerpt, tags, category, date");
+        $this->db->select("id,title,excerpt, tags, category,image, date");
         $this->db->from('drug');
         $query = $this->db->get();
         return $query->result();
@@ -164,7 +164,7 @@ class Admin_model extends CI_model{
     }
 
     function get_single_drug($id){
-        $this->db->select("id,title, content,excerpt, tags, category, date");
+        $this->db->select("id,title, content,excerpt, tags, category,image, date");
         $this->db->from('drug');
         $this->db->where('id', $id);
         $query = $this->db->get();

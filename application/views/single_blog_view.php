@@ -7,11 +7,7 @@
           <h1><?php echo $blog->title; ?></h1>
           
         </div>
-          <ul class="page-breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a> <i class="fa fa-angle-double-right"></i></li>
-            <li><a href="#"><?php echo $blog->title; ?></a> <i class="fa fa-angle-double-right"></i></li>
-           
-       </ul>
+        
      </div>
      </div>
   </div>
@@ -38,7 +34,7 @@
               <div class="entry-content">
               <?php echo $blog->content; ?>
 
-              <h6 style="margin-top:50px;">  <?php echo $blog->tags; ?></h6>
+              <h6 style="margin-top:50px;">Tags: </h6><p><strong> <?php echo $blog->tags; ?></strong></p>
               </div>
           </div>
        </div>
@@ -63,7 +59,7 @@
                   <span><i class="fa fa-user"></i> By Admin</span>
                   <span><i class="fa fa-calendar-check-o"></i> <?php echo $related_blog->date ;?> </span>
                   </div>  
-                  <div class="blog-box-img" style="background-image:url(<?php echo base_url('assets/images/blog-big-template.jpg)' );?>"></div>
+                  <div class="blog-box-img" style="background-image:url(<?php echo base_url('images/'.$related_blog->image.')' );?>"></div>
                 </div>
             </div>
          <?php } ?>

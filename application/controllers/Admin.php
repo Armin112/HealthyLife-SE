@@ -37,9 +37,7 @@ public function __construct(){
         $config['file_name'] = $image_name;
 		$config['upload_path'] = './images/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		
     	$this->upload->initialize($config);
 		if ( ! $this->upload->do_upload())
 		{
@@ -134,6 +132,7 @@ public function __construct(){
         'suggested_drug'=>$this->input->post('suggested_drug'),
         'suggested_drug_title'=>$data['proba'],
         'excerpt'=>substr($this->input->post('content'), 0, 50),
+        'image'=>$this->do_upload(),
         'date'=> date('Y-m-d')
         );
         print_r($disease);
@@ -230,6 +229,7 @@ public function __construct(){
         'tags'=>$this->input->post('tags'),
         'category'=>$this->input->post('category'),
         'excerpt'=>substr($this->input->post('content'), 0, 50),
+        'image'=>$this->do_upload(),
         'date'=> date('Y-m-d')
             );
             print_r($drug);

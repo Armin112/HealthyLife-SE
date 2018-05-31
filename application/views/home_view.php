@@ -75,7 +75,7 @@
                <div class="col-lg-4 col-md-4 col-sm-4 xs-mb-30 pull-left">
            <div class="blog-box blog-2 white-bg active">
               <div class="feature-image mb-20">
-                 <img alt="" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" class="img-fluid">
+                 <img alt="" src="<?php echo base_url('images/'.$disease->image); ?>" class="img-fluid">
                </div>
               <div class="blog-info">
                 <h4 class="text-black"> <a href="<?=base_url('disease/single/'.$disease->id); ?>"><?php echo $disease->title; ?></a> </h4>
@@ -168,7 +168,7 @@
         if(++$i > 3) break; ?>
        <div class="col-md-4 col-sm-4 xs-mb-30">
          <div class="blog">
-           <img class="img-fluid mb-30" src="<?php echo base_url('assets/images/empty-template.jpg'); ?>" alt="">
+           <img class="img-fluid mb-30" src="<?php echo base_url('images/'.$blog->image); ?>" alt="">
             <h3 class="fw-5 mt-10"><a href="<?=base_url('blog/single/'.$blog->id); ?>"><?php echo $blog->title; ?></a></h3>
             <p><?php echo $blog->excerpt; ?></p>
             <div class="admin">

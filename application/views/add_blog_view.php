@@ -66,19 +66,6 @@
           </div>
                 </form>
            
-
-<?php echo form_open_multipart('admin/do_upload');?>
-
-<input type="file" name="userfile" size="20" />
-  
-<br /><br />
-
-<button id="submit" name="submit" class="button">
-                <span>Add Blog</span>
-                <i class="fa fa-check"></i>
-                </button>
-
-</form>
          </div>
     </div>
    </div>
