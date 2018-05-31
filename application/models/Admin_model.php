@@ -37,6 +37,29 @@ class Admin_model extends CI_model{
         $this->db->delete('users');
     }
 
+    //COMMENTS
+    public function add_comment($comment){
+        $this->db->insert('comments', $comment);  
+    }
+
+    function show_blog_comments($post_id)
+    {
+        $this->db->select("id,firstname, lastname, username, email,message, post_id, post_category, date");
+        $this->db->from('comments');
+        $this->db->where('post_category', "blog");
+        $this->db->where('post_id', "$post_id");
+        $query = $this->db->get();
+        if($query->num_rows() > 0)
+        {
+            return $query->result();
+        }
+       
+    }
+
+    function delete_comment($id){
+        $this->db->where('id', $id);
+        $this->db->delete('comments');
+    }
 
     //DISEASES
     public function add_disease_func($disease){

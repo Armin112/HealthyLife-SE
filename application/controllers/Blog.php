@@ -17,7 +17,10 @@ public function __construct(){
         $data['blogs'] = null;
         if($query){
             $data['blogs'] =  $query;
+        
         }
+
+        
         
             $this->load->view('header');
             $this->load->view('navbar');
@@ -40,10 +43,24 @@ public function __construct(){
             $data['blogs'] =  $query1;
         }
         
+        $query_comment = $this->admin_model->show_blog_comments($id);
+        $data['comments'] = null;
+        if($query_comment){
+        $data['comments'] =  $query_comment;
+        }
             $this->load->view('header');
             $this->load->view('navbar');
             $this->load->view('single_blog_view', $data);
             $this->load->view('footer');
+    }
+
+    public function delete_comment()
+    {
+        
+        $post_id = $this->uri->segment(3);
+        $this->admin_model->delete_comment($post_id);
+        $this->session->set_flashdata('success_msg', 'Congratulations, you deleted the comment  successfully.');
+        redirect('blog/single/'.$post_id);
     }
 
    

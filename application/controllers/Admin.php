@@ -26,7 +26,33 @@ public function __construct(){
             $this->load->view('navbar');
             $this->load->view('admin_users_view', $data);
             $this->load->view('footer');
-    
+    }
+
+    //COMMENTS
+    public function add_comment()
+    {
+        $id = $this->input->post('post_id');
+        $comment=array(
+            'firstname'=>$this->input->post('firstname'),
+            'lastname'=>$this->input->post('lastname'),
+            'username'=>$this->input->post('username'),
+            'email'=>$this->input->post('email'),
+            'message'=>$this->input->post('message'),
+            'post_id'=>$this->input->post('post_id'),
+            'post_category'=>$this->input->post('post_category'),
+            'date'=> date('Y-m-d')
+            );
+            print_r($comment);
+          
+            if($comment){
+            $this->admin_model->add_comment($comment);
+            $this->session->set_flashdata('success_msg', 'Comment succesfully added.');
+            redirect('blog/single/'.$id);
+            }
+            else{
+            $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+            redirect('blog/single/'.$this->input->post('post_id'));
+            }
     }
 
     public function delete_user()
