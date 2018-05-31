@@ -51,9 +51,34 @@ class Admin_model extends CI_model{
         $query = $this->db->get();
         if($query->num_rows() > 0)
         {
-            return $query->result();
+            return $query->result();     
+    }
         }
-       
+
+    function show_disease_comments($post_id)
+    {
+        $this->db->select("id,firstname, lastname, username, email,message, post_id, post_category, date");
+        $this->db->from('comments');
+        $this->db->where('post_category', "disease");
+        $this->db->where('post_id', "$post_id");
+        $query = $this->db->get();
+        if($query->num_rows() > 0)
+        {
+            return $query->result();     
+        }
+    }
+
+    function show_drug_comments($post_id)
+    {
+        $this->db->select("id,firstname, lastname, username, email,message, post_id, post_category, date");
+        $this->db->from('comments');
+        $this->db->where('post_category', "drug");
+        $this->db->where('post_id', "$post_id");
+        $query = $this->db->get();
+        if($query->num_rows() > 0)
+        {
+            return $query->result();     
+        }
     }
 
     function delete_comment($id){
@@ -163,7 +188,7 @@ class Admin_model extends CI_model{
 
     function show_all_blogs()
     {
-        $this->db->select("id,title,excerpt,tags, date");
+        $this->db->select("id,title,excerpt,tags,image, date");
         $this->db->from('blog');
         $query = $this->db->get();
         return $query->result();
@@ -175,7 +200,7 @@ class Admin_model extends CI_model{
     }
 
     function get_single_blog($id){
-        $this->db->select("id,title, content,excerpt, tags, date");
+        $this->db->select("id,title, content,excerpt, tags,image, date");
         $this->db->from('blog');
         $this->db->where('id', $id);
         $query = $this->db->get();

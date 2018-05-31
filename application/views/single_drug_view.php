@@ -74,18 +74,24 @@
      </div>
  <!-- ================================================ -->
   <div class="blog-comments mt-40">
-      <div class="comments-1">
+  <?php 
+  if($comments != null)
+  {
+  foreach($comments as $comment) { ?>    
+    <div class="comments-1">
          <div class="comments-photo">
            <img class="img-fluid" src="<?php echo base_url('assets/images/person-template.jpg'); ?>" alt="">
           </div>
            <div class="comments-info">
-           <h4 class="theme-color"> Kevin Martin <span>Sep 15, 2017</span></h4>
-            <div class="port-post-social float-right">
-              <a href="#">Reply</a>
-            </div>
-              <p>Sit amet nibh vulputate cursus a sit amet mauris lorem ipsum dolor sit amet of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio  <a href="#">http://themeforest.net</a> Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat </p>
+           <h4 class="theme-color"> <?php echo $comment->firstname." ". $comment->lastname; ?> <span><?php echo $comment->date ?></span></h4>
+           <div class="port-post-social float-right">
+                            <a href="<?=base_url('drug/edit_comment/'.$comment->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple"> Edit </a>
+                              <a href="<?=base_url('drug/delete_comment/'.$comment->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple">Delete</a>
+                           </div>
+              <p><?php echo $comment->message; ?></p>
          </div>
          </div>
+  <?php } } ?>
         
        
       </div>
@@ -95,11 +101,36 @@
  <div class="row" style="width:100%">
        <div class="col-lg-12 col-md-12">
        <h3 class="theme-color mb-30">Leave a Reply </h3>
+       <?php
+        $id=$this->session->userdata('id');
+        if($id){
+        ?>
        <div class="col-md-12">
             <p class="logged-as">You are logged in as <?php echo $this->session->userdata('firstname'); ?> <?php echo $this->session->userdata('lastname'); ?>.</p>
         </div> 
          <div class="row">
-         <?php
+        
+            <div class="login-box pb-50 clearfix white-bg" style="width: 100%; margin: 0 20px;">
+           <form role="form" method="post" action="<?php echo base_url('admin/add_comment'); ?>">
+           <input type="hidden" name="post_category" class="form-control" placeholder="" value="drug">
+           <input type="hidden" name="post_id" class="form-control" placeholder="" value="<?php echo $drug->id; ?>">
+           <input type="hidden" name="firstname" class="form-control" placeholder="" value="<?php echo $this->session->userdata('firstname'); ?>">
+           <input type="hidden" name="lastname" class="form-control" placeholder="" value="<?php echo $this->session->userdata('lastname'); ?>">  
+           <input type="hidden" name="username" class="form-control" placeholder="" value="<?php echo $this->session->userdata('username'); ?>">
+           <input type="hidden" name="email" class="form-control" placeholder="" value="<?php echo $this->session->userdata('email'); ?>">   
+               
+                <div class="section-field mb-20">
+                    <label class="mb-10" for="Password">Enter your message </label>
+                    <textarea class="form-control" name="message" rows="7"></textarea>
+                </div>
+
+                <button id="post" name="login" class="button">
+                <span>Post Comment</span>
+                <i class="fa fa-check"></i>
+                </button> 
+            </form>
+            </div>
+                <?php
               $success_msg= $this->session->flashdata('success_msg');
               $error_msg= $this->session->flashdata('error_msg');
  
@@ -118,27 +149,16 @@
                     <?php
                   }
                   ?> 
-            <div class="login-box pb-50 clearfix white-bg" style="width: 100%; margin: 0 20px;">
-           <form role="form" method="post" action="<?php echo base_url('admin/add_comment'); ?>">
-               
-           <input type="hidden" name="firstname" class="form-control" placeholder="" value="<?php echo $this->session->userdata('firstname'); ?>">
-           <input type="hidden" name="lastname" class="form-control" placeholder="" value="<?php echo $this->session->userdata('lastname'); ?>">  
-           <input type="hidden" name="username" class="form-control" placeholder="" value="<?php echo $this->session->userdata('username'); ?>">
-           <input type="hidden" name="email" class="form-control" placeholder="" value="<?php echo $this->session->userdata('email'); ?>">   
-               
-                <div class="section-field mb-20">
-                    <label class="mb-10" for="Password">Enter your message </label>
-                    <textarea class="form-control" name="message" rows="7"></textarea>
-                </div>
-
-                <button id="post" name="login" class="button">
-                <span>Post Comment</span>
-                <i class="fa fa-check"></i>
-                </button> 
-            </form>
-                </div>
-          
            </div> 
+                <?php }
+              else {  
+              ?>
+                 <div class="col-md-12">
+            <p class="logged-as">Only registered users can post a comment.</p>
+        </div> 
+              <?php } ?>
+          
+         
         </div> 
       </div>
  <!-- ================================================ -->

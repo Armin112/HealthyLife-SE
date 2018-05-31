@@ -6,7 +6,10 @@ public function __construct(){
  
     parent::__construct();
 
-  	$this->load->helper('url');
+      $this->load->helper('url');
+      $this->load->library('upload');
+      $this->load->helper('form');
+      $this->load->helper(array('form', 'url'));
   	$this->load->model('admin_model');
     $this->load->library('session');
 }
@@ -28,6 +31,30 @@ public function __construct(){
             $this->load->view('footer');
     }
 
+    function do_upload()
+    {
+        $image_name = $_FILES["userfile"]['name'];
+        $config['file_name'] = $image_name;
+		$config['upload_path'] = './images/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+    	$this->upload->initialize($config);
+		if ( ! $this->upload->do_upload())
+		{
+            $error = array('error' => $this->upload->display_errors());
+            echo $error['error'];
+            echo $config['upload_path'];		
+		}
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+            echo $config['upload_path'];
+		return $image_name;
+		}
+        }
+        
     //COMMENTS
     public function add_comment()
     {
@@ -47,11 +74,11 @@ public function __construct(){
             if($comment){
             $this->admin_model->add_comment($comment);
             $this->session->set_flashdata('success_msg', 'Comment succesfully added.');
-            redirect('blog/single/'.$id);
+            redirect($this->input->post('post_category').'/single/'.$id);
             }
             else{
             $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-            redirect('blog/single/'.$this->input->post('post_id'));
+            redirect($this->input->post('post_category').'/single/'.$id);
             }
     }
 
@@ -301,12 +328,15 @@ public function __construct(){
         $this->load->view('footer');
     }
 
-    public function add_blog_func(){
+
+
+    public function add_blog_func(){      
         $blog=array(
         'title'=>$this->input->post('title'),
         'content'=>$this->input->post('content'),
         'tags'=>$this->input->post('tags'),
         'excerpt'=>substr($this->input->post('content'), 0, 50),
+        'image'=>$this->do_upload(),
         'date'=> date('Y-m-d')
             );
             print_r($blog);

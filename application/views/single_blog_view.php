@@ -25,7 +25,7 @@
    <div class="col-lg-12">
        <div class="blog-entry mb-10">
             <div class="entry-image clearfix">
-              <img class="img-fluid" src="<?php echo base_url('assets/images/blog-big-template.jpg'); ?>" alt="">
+              <img class="img-fluid" src="<?php echo base_url('/images/'.$blog->image); ?>" alt="">
           </div>
           <div class="blog-detail">
               <div class="entry-meta mb-10">
@@ -100,6 +100,10 @@
  <div class="row" style="width:100%">
        <div class="col-lg-12 col-md-12">
        <h3 class="theme-color mb-30">Leave a Reply </h3>
+        <?php
+        $id=$this->session->userdata('id');
+        if($id){
+        ?>
        <div class="col-md-12">
             <p class="logged-as">You are logged in as <?php echo $this->session->userdata('firstname'); ?> <?php echo $this->session->userdata('lastname'); ?>.</p>
         </div> 
@@ -145,6 +149,15 @@
                   }
                   ?> 
            </div> 
+                <?php }
+              else {  
+              ?>
+                 <div class="col-md-12">
+            <p class="logged-as">Only registered users can post a comment.</p>
+        </div> 
+              <?php } ?>
+
+
         </div> 
       </div>
  <!-- ================================================ -->
