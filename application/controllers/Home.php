@@ -24,12 +24,19 @@ class Home extends CI_Controller {
 		parent::__construct();
 	
 		$this->load->model('admin_model');
+		$this->load->library('unit_test');
+		$this->load->helper('email');
 	
 	}
 
 	
 	public function index()
 	{
+		$test = $this->session->userdata('email');
+	  
+		$test_name = 'Session mail unit test';
+	  
+		echo $this->unit->run(TRUE, valid_email($test), $test_name);
 		
 		$query_blog = $this->admin_model->show_all_blogs();
         $data['blogs'] = null;
@@ -124,6 +131,19 @@ class Home extends CI_Controller {
 
 	public function edit_profile()
 	{
+
+		$test = $this->session->userdata('email');
+		$test1 = $this->session->userdata('firstname');
+		$test2 = $this->session->userdata('lastname');
+		$test3 = $this->session->userdata('username');
+		
+		$this->unit->run(TRUE, valid_email($test), 'Email valid test');
+		$this->unit->run($test1, 'is_string', 'Firstname string test');
+		$this->unit->run($test2, 'is_string', 'Lastname string test');
+		$this->unit->run($test3, 'username', 'Username correct');
+
+		echo $this->unit->report();
+
 		$this->load->view('header');
 		$this->load->view('navbar');
 		$this->load->view('edit_profile_view');

@@ -9,6 +9,7 @@ public function __construct(){
       $this->load->helper('url');
       $this->load->library('upload');
       $this->load->helper('form');
+      $this->load->library('unit_test');
       $this->load->helper(array('form', 'url'));
   	$this->load->model('admin_model');
     $this->load->library('session');
@@ -106,11 +107,25 @@ public function __construct(){
         }
     
     public function admin_diseases(){
+
+        $this->load->library('unit_test');
+
+
         $query = $this->admin_model->show_all_diseases();
         $data['diseases'] = null;
         if($query){
             $data['diseases'] =  $query;
         }
+
+        $test = $data['diseases'];
+
+        $expected_result = ['a'];
+
+        $test_name = 'Check disease query';
+
+        echo $this->unit->run($test, 'is_array', $test_name);
+
+
 
             $this->load->view('header');
             $this->load->view('navbar');
@@ -253,6 +268,14 @@ public function __construct(){
         $data['drugs'] =  $query;
         }
 
+        foreach($query as $drugs) {
+            $this->unit->run($drugs->id, 'is_numeric', 'Check id unit test');
+        }
+
+         echo $this->unit->report();
+
+
+
             $this->load->view('header');
             $this->load->view('navbar');
             $this->load->view('admin_drugs_view', $data);
@@ -360,6 +383,15 @@ public function __construct(){
         if($query){
         $data['blogs'] =  $query;
         }
+
+
+
+        foreach($query as $blogs) {
+            $this->unit->run($blogs->title, 'is_string', 'Check title unit test');
+        }
+
+         echo $this->unit->report();
+
             $this->load->view('header');
             $this->load->view('navbar');
             $this->load->view('admin_blogs_view', $data);

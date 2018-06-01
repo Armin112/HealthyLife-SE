@@ -9,6 +9,8 @@ public function __construct(){
   	$this->load->helper('url');
   	$this->load->model('user_model');
     $this->load->library('session');
+    $this->load->library('unit_test');
+    $this->load->helper('email');
  
 }
 
@@ -18,6 +20,7 @@ $this->load->view("signup_view.php");
 }
 
 public function login(){
+
     $this->load->view("login_view.php");    
 }
 
@@ -37,6 +40,7 @@ public function register_user(){
       print_r($user);
 
 $username_check=$this->user_model->username_check($user['username']);
+
 
 if($username_check){
 $this->user_model->register_user($user);

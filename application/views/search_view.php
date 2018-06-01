@@ -36,16 +36,12 @@ page-title -->
               <div class="blog-info">
                 <h4 class="text-black"> <a href="<?=base_url('disease/single/'.$disease->id); ?>"><?php echo $disease->title; ?></a> </h4>
                  
-                 <p class="mt-15"><?php echo $disease->excerpt; ?></p>
+                 <p class="mt-15"><?php echo $disease->excerpt; ?>...</p>
                  <strong class="theme-color">SUGGESTED DRUG BY SYSTEM</strong>
           
                <h4 class="mt-15 suggested-drugs"><span style="font-weight:600"><a href="<?=base_url('drug/single/'.$disease->suggested_drug); ?>"><?php echo $disease->suggested_drug_title; ?></a></span>  
                
-                <button><span class="unlike empty">345</span></button>
-                <button><span class="unlike full">345</span></button>
-
-                <button><span class="like empty">345</span></button> 
-                <button><span class="like full">345</span></button>  
+              
                
                
               </h4>
