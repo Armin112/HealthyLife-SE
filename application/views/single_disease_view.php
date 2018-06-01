@@ -56,8 +56,8 @@
         ?>
 
        
-         <a href="<?=base_url('disease/unlike/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span class="unlike empty" style="    padding-left: 50px;background-position: left !important;padding-right: 0; margin-left: 30px;"><?php echo $num_of_unlikes; ?></span></a>
-         <a href="<?=base_url('disease/like/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span class="like empty" style="float:right; margin-right:30px;"><?php echo $num_of_likes; ?></span></a> 
+         <a href="<?=base_url('disease/unlike/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span id="unlike" class="unlike empty" style="    padding-left: 50px;background-position: left !important;padding-right: 0; margin-left: 30px;"><?php echo $num_of_unlikes; ?></span></a>
+         <a href="<?=base_url('disease/like/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span id="like" class="like empty" style="float:right; margin-right:30px;"><?php echo $num_of_likes; ?></span></a> 
        
          <?php } else {?>
           <a><span class="unlike empty" style="    padding-left: 50px;background-position: left !important;padding-right: 0; margin-left: 30px;"><?php echo $num_of_unlikes; ?></span></a>
@@ -72,7 +72,44 @@
       </div>
 		 
 		
-			    
+	 <!--<script>
+ $(document).ready(function(){
+  
+ $('#unlike').on('click',function(){
+            var id = <?php echo $disease->id ?>;
+           
+            var el = this;
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo site_url('disease/unlike_ajax')?>",
+                dataType : "JSON",
+                data : {id:id},
+                success: function(data){
+                   alert("Unliked");
+                }
+            });
+            return false;
+        });
+      
+ $('#like').on('click',function(){
+            var id = <?php echo $disease->id ?>;
+           
+            var el = this;
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo site_url('disease/like_ajax')?>",
+                dataType : "JSON",
+                data : {id:id},
+                success: function(data){
+                   alert("Liked");
+                }
+            });
+            return false;
+        });
+
+});
+</script>
+-->		    
 			 
 			 
   
@@ -126,7 +163,7 @@
          </div>
          </div>
   <?php } } ?>
-        
+       
        
       </div>
   </div>
