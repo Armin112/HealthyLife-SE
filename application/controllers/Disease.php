@@ -81,8 +81,8 @@ public function __construct(){
     
             if($unlike_data){
             $this->admin_model->unlike_func($unlike_data);
-           
             redirect('disease/single/'.$disease_id);
+            
             }
             else{
                 redirect('disease/single/'.$disease_id);

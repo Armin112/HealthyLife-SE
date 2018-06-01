@@ -163,16 +163,12 @@ class Admin_model extends CI_model{
     public function unlike_func($unlike_data){
         $this->db->insert('unlike_drugs', $unlike_data); 
 
-        $this->db->set('suggested_drug_unlikes', 'suggested_drug_unlikes'+1);
-        $this->db->where('id', $unlike_data['disease']);
-        $this->db->update('disease');  
+     
     }
 
     public function like_func($like_data){
         $this->db->insert('like_drugs', $like_data);   
-        $this->db->set('suggested_drug_likes', 'suggested_drug_likes'+1);
-        $this->db->where('id', $like_data['disease']);
-        $this->db->update('disease');  
+         
     }
 
 
