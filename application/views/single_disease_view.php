@@ -54,12 +54,18 @@
         $id=$this->session->userdata('id');
         if($id){
         ?>
+
+       
          <a href="<?=base_url('disease/unlike/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span class="unlike empty" style="    padding-left: 50px;background-position: left !important;padding-right: 0; margin-left: 30px;"><?php echo $num_of_unlikes; ?></span></a>
          <a href="<?=base_url('disease/like/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span class="like empty" style="float:right; margin-right:30px;"><?php echo $num_of_likes; ?></span></a> 
-        <?php } else {?>
+       
+         <?php } else {?>
           <a><span class="unlike empty" style="    padding-left: 50px;background-position: left !important;padding-right: 0; margin-left: 30px;"><?php echo $num_of_unlikes; ?></span></a>
          <a><span class="like empty" style="float:right; margin-right:30px;"><?php echo $num_of_likes; ?></span></a> 
         <?php } ?> 
+
+      
+
         </h4>
 			 
         </div>
@@ -114,7 +120,7 @@
            <h4 class="theme-color"> <?php echo $comment->firstname." ". $comment->lastname; ?> <span><?php echo $comment->date ?></span></h4>
            <div class="port-post-social float-right">
                             <a href="<?=base_url('disease/edit_comment/'.$comment->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple"> Edit </a>
-                              <a href="<?=base_url('disease/delete_comment/'.$comment->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple">Delete</a>
+                              <a href="<?=base_url('disease/delete_comment/'.$comment->id.'/'.$disease->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple">Delete</a>
                            </div>
               <p><?php echo $comment->message; ?></p>
          </div>

@@ -55,6 +55,12 @@ public function __construct(){
             $data['unlikes'] =  $query_unlikes;
         }
 
+        $query_likes = $this->admin_model->get_all_likes();
+        $data['likes'] = null;
+        if($query_likes){
+            $data['likes'] =  $query_likes;
+        }
+
             $this->load->view('header');
             $this->load->view('navbar');
             $this->load->view('single_disease_view', $data);
@@ -109,8 +115,9 @@ public function __construct(){
     {
         
         $post_id = $this->uri->segment(3);
+        $disease_id = $this->uri->segment(4);
         $this->admin_model->delete_comment($post_id);
         $this->session->set_flashdata('success_msg', 'Congratulations, you deleted the comment  successfully.');
-        redirect('disease/single/'.$post_id);
+        redirect('disease/single/'.$disease_id);
     }
 }

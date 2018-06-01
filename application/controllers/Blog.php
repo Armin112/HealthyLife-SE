@@ -56,11 +56,11 @@ public function __construct(){
 
     public function delete_comment()
     {
-        
+        $blog_id = $this->uri->segment(4);
         $post_id = $this->uri->segment(3);
         $this->admin_model->delete_comment($post_id);
         $this->session->set_flashdata('success_msg', 'Congratulations, you deleted the comment  successfully.');
-        redirect('blog/single/'.$post_id);
+        redirect('blog/single/'.$blog_id);
     }
 
    

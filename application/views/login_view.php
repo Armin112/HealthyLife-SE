@@ -51,7 +51,7 @@
                     <?php
                   }
                   ?>   
-       <form role="form" method="post" action="<?php echo base_url('user/login_user'); ?>">
+       <form role="form" method="post" action="<?php echo base_url('user/login_user'); ?>" id="loginForm">
             <div class="section-field mb-20">
              <label class="mb-10" for="name">User name* </label>
                <input id="username" class="web form-control" type="text" placeholder="Username" name="username">
@@ -102,18 +102,26 @@
 <script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
 
  
+<!--<script>
+$("#loginForm").submit(function() {
+    var data = $("#loginForm").serialize();
+    //alert(data); return false;
+    $.ajax({
+        url: "/user/login_user",
+        data: data,
+        type: "POST",
+   success: function(msg) {
+            if (msg) {
+               alert(msg);
+            } else {
+               alert("nothing came back For some reason");
+            }
+        }
+    });
+    return false;
+});
 
-<!-- bitcoin script -->
-
- <script>
-  (function(b,i,t,C,O,I,N) {
-    window.addEventListener('load',function() {
-      if(b.getElementById(C))return;
-      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
-      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
-    },false)
-  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
 </script>
-
+-->
 </body>
 </html>

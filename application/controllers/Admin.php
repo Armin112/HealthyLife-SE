@@ -273,9 +273,7 @@ public function __construct(){
         }
 
          echo $this->unit->report();
-
-
-
+         
             $this->load->view('header');
             $this->load->view('navbar');
             $this->load->view('admin_drugs_view', $data);

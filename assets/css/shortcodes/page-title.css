@@ -11,7 +11,7 @@ NOTE: This file contains Page Title CSS.
 **************************************/
 .page-title { display: block; padding-top:250px; padding-bottom: 100px; position: relative; }
 .page-title.bg-overlay-black-60:before  { z-index: 0; }
-.page-title .container { height: 100%; position: relative; }
+.page-title .container { position: relative; }
 .page-title span { text-transform: capitalize; }
 .page-title h1 { text-transform: capitalize; color: #ffffff; font-weight: 600; }
 .page-title p { font-size: 18px; text-transform: capitalize; color: #ffffff; }

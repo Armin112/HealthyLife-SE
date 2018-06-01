@@ -38,7 +38,7 @@
                     echo $error_msg;
                   }
         ?>
-        <form role="form" method="post" action="<?php echo base_url('user/register_user'); ?>">
+        <form role="form" method="post" action="<?php echo base_url('user/register_user'); ?>" id="registerForm">
           <div class="row">
              <div class="section-field mb-20 col-sm-6">
                <label class="mb-10" for="name">First name </label>
@@ -99,14 +99,25 @@
 
 <!-- bitcoin script -->
 
- <script>
-  (function(b,i,t,C,O,I,N) {
-    window.addEventListener('load',function() {
-      if(b.getElementById(C))return;
-      I=b.createElement(i),N=b.getElementsByTagName(i)[0];
-      I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
-    },false)
-  })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+<!--<script>
+$("#registerForm").submit(function() {
+    var data = $("#registerForm").serialize();
+    //alert(data); return false;
+    $.ajax({
+        url: "/user/register_user",
+        data: data,
+        type: "POST",
+   success: function(msg) {
+            if (msg) {
+               alert(msg);
+            } else {
+               alert("nothing came back For some reason");
+            }
+        }
+    });
+    return false;
+});
+
 </script>
 
 </body>

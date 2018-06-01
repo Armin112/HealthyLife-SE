@@ -166,7 +166,7 @@
             <h3 class="fw-5 mt-10"><a href="<?=base_url('blog/single/'.$blog->id); ?>"><?php echo $blog->title; ?></a></h3>
             <p><?php echo $blog->excerpt; ?></p>
             <div class="admin">
-             <span>By adimn / <a href="#">Business</a></span>
+             <span>By admin / <a href="#">Business</a></span>
            </div>
          </div>
        </div>

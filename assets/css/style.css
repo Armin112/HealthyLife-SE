@@ -2190,3 +2190,15 @@ strong.theme-color {
     height: 220px;
     overflow: hidden;
 }
+
+.mega-menu .menu-links > li > a:hover ul {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.blog-box.blog-2{
+    height:450px;
+}

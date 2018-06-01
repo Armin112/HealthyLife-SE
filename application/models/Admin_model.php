@@ -155,6 +155,11 @@ class Admin_model extends CI_model{
         return $query->result();
     }
 
+    function get_all_likes(){
+        $query = $this->db->get('like_drugs');
+        return $query->result();
+    }
+
     public function unlike_func($unlike_data){
         $this->db->insert('unlike_drugs', $unlike_data); 
 

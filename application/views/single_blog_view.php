@@ -82,7 +82,7 @@
            <h4 class="theme-color"> <?php echo $comment->firstname." ". $comment->lastname; ?> <span><?php echo $comment->date ?></span></h4>
            <div class="port-post-social float-right">
                             <a href="<?=base_url('blog/edit_comment/'.$comment->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple"> Edit </a>
-                              <a href="<?=base_url('blog/delete_comment/'.$comment->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple">Delete</a>
+                              <a href="<?=base_url('blog/delete_comment/'.$comment->id.'/'.$blog->id); ?>"  rel="tooltip" title="Remove" class="comment-button btn-simple">Delete</a>
                            </div>
               <p><?php echo $comment->message; ?></p>
          </div>
