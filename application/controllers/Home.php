@@ -43,6 +43,11 @@ class Home extends CI_Controller {
 			$data['diseases'] =  $query_disease;
 		}
 
+		
+
+	
+		
+
 		$num_of_users = $this->admin_model->show_num_of_users();
 		$data['num_of_users'] =  $num_of_users;
 		

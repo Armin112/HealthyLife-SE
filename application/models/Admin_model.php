@@ -22,6 +22,22 @@ class Admin_model extends CI_model{
         return $query->num_rows();
     }
 
+    function show_num_of_unlikes($id){
+        $this->db->select("id");
+        $this->db->from('unlike_drugs');
+        $this->db->where('disease', $id);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    function show_num_of_likes($id){
+        $this->db->select("id");
+        $this->db->from('like_drugs');
+        $this->db->where('disease', $id);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
 
     //USERS
     function show_all_users()
@@ -93,7 +109,7 @@ class Admin_model extends CI_model{
 
     function show_all_diseases()
     {
-        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title,image, date");
+        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title,suggested_drug_unlikes,suggested_drug_likes, image, date");
         $this->db->from('disease');
         $query = $this->db->get();
         return $query->result();
@@ -101,7 +117,7 @@ class Admin_model extends CI_model{
 
     function show_searched_diseases($disease)
     {
-        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title,image, date");
+        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title,suggested_drug_unlikes,suggested_drug_likes, image, date");
         $this->db->from('disease');
         $this->db->like('title', $disease['search_disease']);
         $query = $this->db->get();
@@ -127,12 +143,33 @@ class Admin_model extends CI_model{
     }
 
     function get_single_disease($id){
-        $this->db->select("id,title, content,excerpt, tags, suggested_drug,suggested_drug_title,image, date");
+        $this->db->select("id,title, content,excerpt,  tags, suggested_drug,suggested_drug_title,suggested_drug_unlikes,suggested_drug_likes, image, date");
         $this->db->from('disease');
         $this->db->where('id', $id);
         $query = $this->db->get();
         return $query->result();
     }
+
+    function get_all_unlikes(){
+        $query = $this->db->get('unlike_drugs');
+        return $query->result();
+    }
+
+    public function unlike_func($unlike_data){
+        $this->db->insert('unlike_drugs', $unlike_data); 
+
+        $this->db->set('suggested_drug_unlikes', 'suggested_drug_unlikes'+1);
+        $this->db->where('id', $unlike_data['disease']);
+        $this->db->update('disease');  
+    }
+
+    public function like_func($like_data){
+        $this->db->insert('like_drugs', $like_data);   
+        $this->db->set('suggested_drug_likes', 'suggested_drug_likes'+1);
+        $this->db->where('id', $like_data['disease']);
+        $this->db->update('disease');  
+    }
+
 
     public function edit_disease($disease){
         $this->db->set('title', $disease['title']);
@@ -183,20 +220,48 @@ class Admin_model extends CI_model{
    
     //BLOG
     public function add_blog_func($blog){
-        $this->db->insert('blog', $blog);   
+        $this->db->insert('blog', $blog);
     }
 
+   
     function show_all_blogs()
     {
-        $this->db->select("id,title,excerpt,tags,image, date");
-        $this->db->from('blog');
-        $query = $this->db->get();
+        $query = $this->db->get('blog');
         return $query->result();
+    }
+
+    function product_list(){
+        $hasil=$this->db->get('product');
+        return $hasil->result();
     }
 
     function delete_blog($id){
         $this->db->where('id', $id);
         $this->db->delete('blog');
+    }
+
+    
+
+    function delete_blog_ajax_model(){
+        $product_code=$this->input->post('product_code');
+        $this->db->where('id', $product_code);
+        $result=$this->db->delete('blog');
+        return $result;
+    }
+
+    function admin_blogs_ajax_model(){
+        $hasil=$this->db->get('blog');
+        return $hasil->result();
+    }
+
+    function admin_diseases_ajax_model(){
+        $hasil=$this->db->get('disease');
+        return $hasil->result();
+    }
+
+    function admin_drugs_ajax_model(){
+        $hasil=$this->db->get('drug');
+        return $hasil->result();
     }
 
     function get_single_blog($id){

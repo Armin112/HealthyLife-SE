@@ -360,7 +360,6 @@ public function __construct(){
         if($query){
         $data['blogs'] =  $query;
         }
-
             $this->load->view('header');
             $this->load->view('navbar');
             $this->load->view('admin_blogs_view', $data);
@@ -375,6 +374,11 @@ public function __construct(){
         $this->admin_model->delete_blog($id);
         $this->session->set_flashdata('success_msg', 'Congratulations, you deleted the blog successfully.');
         redirect('admin/admin_blogs');
+    }
+
+    function delete(){
+        $data=$this->product_model->delete_product();
+        echo json_encode($data);
     }
 
     public function admin_edit_blog(){  
@@ -423,6 +427,27 @@ public function __construct(){
 
          
     }
+
+    function delete_blog_ajax(){
+        $data=$this->admin_model->delete_blog_ajax_model();
+        echo json_encode($data);
+    }
+
+    function admin_blogs_ajax(){
+        $data=$this->admin_model->admin_blogs_ajax_model();
+        echo json_encode($data);
+    }
+
+    function admin_diseases_ajax(){
+        $data=$this->admin_model->admin_diseases_ajax_model();
+        echo json_encode($data);
+    }
+
+    function admin_drugs_ajax(){
+        $data=$this->admin_model->admin_drugs_ajax_model();
+        echo json_encode($data);
+    }
+ 
 
 
 

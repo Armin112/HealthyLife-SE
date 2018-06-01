@@ -2058,13 +2058,14 @@ margin-top:50px;}
 .admin-table button, .admin-table a {
     font-size: 14px;
     color: #fff !important;
+    margin:0 3px;
 }
 
 .admin-table tr:first-child th {
     padding: 20px 0;
 }
 
-.admin-table tr:first-child {
+.admin-table thead tr {
     background: -webkit-linear-gradient(right, #ff8850, #f7c605) !important;
     color: #fff;
 }
@@ -2139,7 +2140,7 @@ margin-top:50px;}
 }
 
 .suggested-drugs .unlike {
-    margin-left: 50px;
+    margin-left: 30px;
     background-position: left !important;
     padding-left: 33px;
     padding-right: 20px;

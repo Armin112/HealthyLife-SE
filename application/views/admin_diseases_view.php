@@ -40,7 +40,7 @@
                   ?>    
     <div ><a class="button mr-0" href="<?php echo base_url('admin/add_disease'); ?>"  style="padding: 15px 30px;">ADD DISEASE</a></div>     
         
-    <table class="admin-table">
+    <!--<table class="admin-table">
         <tr>
             <th>ID</th>
             <th>Title</th>
@@ -60,7 +60,68 @@
         </td>
         </tr>
     <?php } ?>
-    </table>
+    </table>-->
+
+     <?php
+        foreach($diseases as $disease) { ?>
+          <input type="hidden" name="product_code_delete" id="product_code_delete" value="<?php echo $disease->id; ?>" class="form-control">
+         <?php } ?>
+    <table class="admin-table" id="mydata">
+                <thead>
+                <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+                </thead>
+                <tbody id="show_disease_data">
+                     
+                </tbody>
+            </table>
+
   
 </div>
 </section>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+
+  <script type='text/javascript'>
+
+ $(document).ready(function(){
+show_product();
+ function show_product(){
+            $.ajax({
+                type  : "POST",
+                url   : '<?php echo base_url('admin/admin_diseases_ajax'); ?>',    
+                dataType : 'json',
+                error: function(){
+                          alert("ne radi");
+                          },
+                success : function(data){
+                    var html = '';
+                    var i;
+                    for(i=0; i<data.length; i++){
+                        html += '<tr>'+
+                                '<td>'+data[i].id+'</td>'+
+                                '<td>'+data[i].title+'</td>'+
+                                '<td>'+data[i].date+'</td>'+
+                                '<td>'+
+                                    '<a href="<?=base_url("disease/single/") ?>'+data[i].id+'" rel="tooltip" title="Remove" class="btn btn-warning btn-simple btn-lg">Read More </a>'+
+                                    '<a href="<?=base_url("admin/admin_edit_disease/") ?>'+data[i].id+'" rel="tooltip" title="Remove" class="btn btn-primary btn-simple btn-lg">Edit </a>'+
+                                    
+                                    '<a href="<?=base_url("admin/delete_disease/") ?>'+data[i].id+'" rel="tooltip" title="Remove" class="deleteBlog btn btn-danger btn-simple btn-lg">Delete </a>'+
+                                    
+                                '</td>'+
+                                '</tr>';
+                    }
+                    $('#show_disease_data').html(html);
+                }
+ 
+            });
+        }
+});
+
+
+</script>

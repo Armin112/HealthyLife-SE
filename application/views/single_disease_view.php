@@ -44,18 +44,24 @@
        </div>
 
 		   <div class="port-post clearfix mt-40">
-      <strong class="theme-color" style="font-size:20px; margin-bottom:20px;font-size: 20px;float: left;width: 100%;border-bottom: 1px solid;">SUGGESTED DRUGS</strong>
+      <strong class="theme-color" style="font-size:20px; margin-bottom:20px;font-size: 20px;float: left;width: 100%;border-bottom: 1px solid;">SUGGESTED DRUG</strong>
         <div class="port-post-info" style="padding-left:10px;">
         
-			 <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;"><span style="font-weight:600"><a href="#">
-			 Drug 1</a></span> <span style="float:right; font-weight:400">350 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>4
-			 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;"><span style="font-weight:600"><a href="#">
-			 Drug 2</a></span> <span style="float:right; font-weight:400">320 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>15
-			 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
-			  <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;"><span style="font-weight:600"><a href="#">
-			 Drug 3</a></span> <span style="float:right; font-weight:400">250 <i class="fa fa-heart" style="margin-right:15px; color:#f7c605"></i>21
-			 <i class="fa fa-heart-o" style=" color:#f7c605"></i></span> </h4>
+			 <h4 class="mt-15" style="border-bottom:1px solid #e8e5e5;margin-bottom: 20px;float: left;width: 100%; padding-bottom:5px;"><span style="font-weight:600">
+         <a href="<?=base_url('drug/single/'.$disease->suggested_drug); ?>">
+         <?php echo $disease->suggested_drug_title; ?></a></span>
+         <?php
+        $id=$this->session->userdata('id');
+        if($id){
+        ?>
+         <a href="<?=base_url('disease/unlike/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span class="unlike empty" style="    padding-left: 50px;background-position: left !important;padding-right: 0; margin-left: 30px;"><?php echo $num_of_unlikes; ?></span></a>
+         <a href="<?=base_url('disease/like/'.$disease->suggested_drug.'/'.$disease->id); ?>"><span class="like empty" style="float:right; margin-right:30px;"><?php echo $num_of_likes; ?></span></a> 
+        <?php } else {?>
+          <a><span class="unlike empty" style="    padding-left: 50px;background-position: left !important;padding-right: 0; margin-left: 30px;"><?php echo $num_of_unlikes; ?></span></a>
+         <a><span class="like empty" style="float:right; margin-right:30px;"><?php echo $num_of_likes; ?></span></a> 
+        <?php } ?> 
+        </h4>
+			 
         </div>
       </div>
 		 
